@@ -12,6 +12,10 @@ require('./models/ElectoralVotes.php');
   $ev = new ElectoralVotes($GLOBALS['mysqli']);
   $query = $ev->school(_get('order'));
 
+  if($GLOBALS['mysqli']->error) {
+    echo '<p class="alert alert-danger" role="alert">' . $GLOBALS['mysqli']->error .'</p>';
+  } else {
+
   $prev_school = '';
   while($data = $query->fetch_object()) {
 
@@ -51,6 +55,7 @@ require('./models/ElectoralVotes.php');
     </tr>
 <?php
 }
+}//else
 ?>
   </tbody>
 </table>

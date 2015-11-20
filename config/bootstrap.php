@@ -1,6 +1,7 @@
 <?php
 ini_set('include_path', dirname(__FILE__));
-
+ini_set('display_erros', false);
+//error_reporting(E_STRICT);
 
 # CONSTS
 define('CONFIG_FILE', 'config.ini');

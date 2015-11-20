@@ -7,12 +7,18 @@ require('./models/School.php');
 
 <div class="col-md-9">
   <label>NOME DA ESCOLA</label>
-  <select name="school_id" class="form-control">
-    <option>Selecione</option>
 <?php
   $ev = new School($GLOBALS['mysqli']);
   $query = $ev->getAll();
   $amount = 0;
+
+  if(!$query) {
+    echo '<p class="alert alert-danger" role="alert">' . $GLOBALS['mysqli']->error . '</p>';
+  } else {
+?>
+  <select name="school_id" class="form-control">
+    <option>Selecione</option>
+<?php
   while($data = $query->fetch_object()) {
     $selected = '';
 
@@ -41,6 +47,8 @@ require('./models/School.php');
 <?php
   $i++;
   }
+
+} //else
 ?>
   </select>
 </div><!-- .col-md-3 -->

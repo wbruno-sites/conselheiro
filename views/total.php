@@ -8,6 +8,14 @@ require('./models/ElectoralVotes.php');
 <a href="?report=total&amp;order=id" class="btn btn-default">Ordenado por ID</a>
 <a href="?report=total&amp;order=total" class="btn btn-default">Ordenado por votos</a>
 
+<?php
+  $ev = new ElectoralVotes($GLOBALS['mysqli']);
+  $query = $ev->total(_get('order'));
+
+  if($GLOBALS['mysqli']->error) {
+    echo '<p class="alert alert-danger" role="alert">' . $GLOBALS['mysqli']->error .'</p>';
+  } else {
+?>
 <table class="table table-striped table-hover">
   <thead>
     <tr>
@@ -18,8 +26,6 @@ require('./models/ElectoralVotes.php');
   </thead>
   <tbody>
 <?php
-  $ev = new ElectoralVotes($GLOBALS['mysqli']);
-  $query = $ev->total(_get('order'));
   while($data = $query->fetch_object()) {
 ?>
     <tr>
@@ -29,6 +35,7 @@ require('./models/ElectoralVotes.php');
     </tr>
 <?php
 }
+}//else
 ?>
   </tbody>
 </table>

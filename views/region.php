@@ -12,12 +12,14 @@ require('./models/ElectoralVotes.php');
   $ev = new ElectoralVotes($GLOBALS['mysqli']);
   $query = $ev->region(_get('order'));
 
+  if($GLOBALS['mysqli']->error) {
+    echo '<p class="alert alert-danger" role="alert">' . $GLOBALS['mysqli']->error .'</p>';
+  } else {
+
   $prev_region = '';
   while($data = $query->fetch_object()) {
 
     if ($prev_region === '' || $prev_region !== $data->region_name) {
-
-
 ?>
 
 <?php if ($prev_region !== '') {  ?>
@@ -51,6 +53,7 @@ require('./models/ElectoralVotes.php');
     </tr>
 <?php
 }
+}//else
 ?>
   </tbody>
 </table>

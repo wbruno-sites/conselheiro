@@ -11,6 +11,12 @@ function loadView($view, $sidebar = true)
     <!-- Page Content -->
     <div class="container-fluid">
     <div class="row">
+<?php
+    if($GLOBALS['error']) {
+      echo '<p class="alert alert-danger" role="alert">' . $GLOBALS['error'] .'</p>';
+    }
+?>
+
     <?php
     $file = "./views/{$view}.php";
     if (is_file($file)) {
