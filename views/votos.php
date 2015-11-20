@@ -43,40 +43,41 @@ require('./models/School.php');
   </select>
 </div><!-- .col-md-3 -->
 
+<div class="col-md-12">
+  <h2>CANDIDATOS</h2>
 
-<h2>CANDIDATOS</h2>
-
-<?php
-if (_get('school_id') && _get('room_id')) {
-?>
-<table>
-  <thead>
-    <tr>
-      <th>Número</th>
-      <th>Região</th>
-      <th>Nome</th>
-      <th>Votos</th>
-    </tr>
-  </thead>
-  <tbody>
-<?php
-  $ev = new ElectoralVotes($GLOBALS['mysqli']);
-  $query = $ev->getCalculation(_get('school_id'), _get('room_id'));
-  while($data = $query->fetch_object()) {
-?>
-    <tr data-candidateId="<?php echo $data->id; ?>" data-schoolId="<?php echo _get('school_id'); ?>" data-roomId="<?php echo _get('room_id'); ?>">
-      <td><?php echo $data->id; ?></td>
-      <td><?php echo $data->region_name; ?></td>
-      <td><?php echo $data->name; ?></td>
-      <td><input type="tel" name="votes_amount[]" pattern="[0-9]+" required="required" maxlength="10" class="form-control" value="<?php echo $data->votes_amount; ?>" /></td>
-    </tr>
-<?php
+  <?php
+  if (_get('school_id') && _get('room_id')) {
+  ?>
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Número</th>
+        <th>Região</th>
+        <th>Nome</th>
+        <th>Votos</th>
+      </tr>
+    </thead>
+    <tbody>
+  <?php
+    $ev = new ElectoralVotes($GLOBALS['mysqli']);
+    $query = $ev->getCalculation(_get('school_id'), _get('room_id'));
+    while($data = $query->fetch_object()) {
+  ?>
+      <tr data-candidateId="<?php echo $data->id; ?>" data-schoolId="<?php echo _get('school_id'); ?>" data-roomId="<?php echo _get('room_id'); ?>">
+        <td><?php echo $data->id; ?></td>
+        <td><?php echo $data->region_name; ?></td>
+        <td><?php echo $data->name; ?></td>
+        <td><input type="tel" name="votes_amount[]" pattern="[0-9]+" required="required" maxlength="10" class="form-control" value="<?php echo $data->votes_amount; ?>" /></td>
+      </tr>
+  <?php
+    }
+  } else {
+  ?>
+    <p>Você deve selecionar alguma escola e alguma sala antes.</p>
+  <?php
   }
-} else {
-?>
-  <p>Você deve selecionar alguma escola e alguma sala antes.</p>
-<?php
-}
-?>
-  </tbody>
-</table>
+  ?>
+    </tbody>
+  </table>
+</div>
