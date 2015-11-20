@@ -56,6 +56,8 @@ require('./models/School.php');
         <th>Região</th>
         <th>Nome</th>
         <th>Votos</th>
+        <th>Status</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -63,12 +65,15 @@ require('./models/School.php');
     $ev = new ElectoralVotes($GLOBALS['mysqli']);
     $query = $ev->getCalculation(_get('school_id'), _get('room_id'));
     while($data = $query->fetch_object()) {
+      $status = $ev->getStatusLabel($data->status);
   ?>
       <tr data-candidateId="<?php echo $data->id; ?>" data-schoolId="<?php echo _get('school_id'); ?>" data-roomId="<?php echo _get('room_id'); ?>">
         <td><?php echo $data->id; ?></td>
         <td><?php echo $data->region_name; ?></td>
         <td><?php echo $data->name; ?></td>
         <td><input type="tel" name="votes_amount[]" pattern="[0-9]+" required="required" maxlength="10" class="form-control" value="<?php echo $data->votes_amount; ?>" /></td>
+        <td class="status"><?php echo $status; ?></td>
+        <td><button type="button" class="btn btn-primary btn-confirm">Confirmar</button></td>
       </tr>
   <?php
     }

@@ -10,7 +10,7 @@ class ElectoralVotes
   public function getCalculation($school_id, $room_id)
   {
     return $this->mysqli->query("
-      SELECT c.id, c.name, r.name as region_name, votes_amount
+      SELECT c.id, c.name, r.name as region_name, votes_amount, v.status
         FROM candidates c
         INNER JOIN regions r
           ON c.region_id = r.id
@@ -21,12 +21,27 @@ class ElectoralVotes
         ORDER BY c.id");
   }
 
-  public function vote($candidate_id, $school_id, $room_id, $votes_amount)
+  public function upsert($candidate_id, $school_id, $room_id, $votes_amount, $status)
   {
     $sql = "INSERT INTO votes (candidate_id, school_id, room_id, votes_amount, status)
-        VALUES ({$candidate_id}, {$school_id}, {$room_id}, {$votes_amount}, 'pending')
-          ON DUPLICATE KEY UPDATE votes_amount = {$votes_amount}";
+        VALUES ({$candidate_id}, {$school_id}, {$room_id}, {$votes_amount}, '{$status}')
+          ON DUPLICATE KEY UPDATE votes_amount = {$votes_amount}, status = '{$status}'";
 
     return $this->mysqli->query($sql);
+  }
+
+  public function getStatusLabel($status) {
+    switch ($status) {
+     case 'pending':
+       $html = '<span class="label label-warning">pending</span>';
+       break;
+     case 'confirmed':
+       $html = '<span class="label label-success">confirmed</span>';
+       break;
+     default:
+       $html = '';
+       break;
+   }
+   return $html;
   }
 }
