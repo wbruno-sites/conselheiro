@@ -32,7 +32,7 @@ class ElectoralVotes
 
   public function total($order)
   {
-    $order_by = $order === 'total' ? 'total DESC' : 'id ASC';
+    $order_by = $order === 'total' ? 'total DESC' : 'c.id ASC';
 
     $sql = "SELECT c.id, c.name, SUM(votes_amount) AS total
       FROM candidates c
@@ -44,8 +44,10 @@ class ElectoralVotes
     return $this->mysqli->query($sql);
   }
 
-  public function region()
+  public function region($order)
   {
+    $order_by = $order === 'total' ? 'total DESC' : 'c.id ASC';
+
     $sql = "SELECT c.id, c.region_id, r.name as region_name, c.name, SUM(votes_amount) AS total
       FROM candidates c
       INNER JOIN votes v
@@ -53,13 +55,15 @@ class ElectoralVotes
       INNER JOIN regions r
         ON r.id = c.region_id
       GROUP BY c.region_id, c.id
-      ORDER BY c.region_id, total DESC";
+      ORDER BY c.region_id, {$order_by}";
 
     return $this->mysqli->query($sql);
   }
 
-  public function school()
+  public function school($order)
   {
+    $order_by = $order === 'total' ? 'total DESC' : 'c.id ASC';
+
     $sql = "SELECT c.id, v.school_id, s.name as school_name, c.name, SUM(votes_amount) AS total
       FROM candidates c
       INNER JOIN votes v
@@ -67,7 +71,7 @@ class ElectoralVotes
       INNER JOIN schools s
         ON s.id = v.school_id
       GROUP BY v.school_id, c.id
-      ORDER BY v.school_id, c.id";
+      ORDER BY v.school_id, {$order_by}";
 
     return $this->mysqli->query($sql);
   }

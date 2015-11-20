@@ -5,10 +5,12 @@ require('./models/ElectoralVotes.php');
 <h1>Relatórios - Regiões</h1>
 
 
+<a href="?report=region&amp;order=id" class="btn btn-default">Ordenado por ID</a>
+<a href="?report=region&amp;order=total" class="btn btn-default">Ordenado por votos</a>
 
 <?php
   $ev = new ElectoralVotes($GLOBALS['mysqli']);
-  $query = $ev->region();
+  $query = $ev->region(_get('order'));
 
   $prev_region = '';
   while($data = $query->fetch_object()) {

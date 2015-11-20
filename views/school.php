@@ -5,10 +5,12 @@ require('./models/ElectoralVotes.php');
 <h1>Relatórios - Escolas</h1>
 
 
+<a href="?report=school&amp;order=id" class="btn btn-default">Ordenado por ID</a>
+<a href="?report=school&amp;order=total" class="btn btn-default">Ordenado por votos</a>
 
 <?php
   $ev = new ElectoralVotes($GLOBALS['mysqli']);
-  $query = $ev->school();
+  $query = $ev->school(_get('order'));
 
   $prev_school = '';
   while($data = $query->fetch_object()) {
