@@ -5,13 +5,13 @@ if($_GET['id']){
 
   if(!$query) {
     $message = "Usuário inválido!";
-    header("Location: http://localhost:8080/listar-usuarios.php?error={$message}");
+    header("Location: http://{$GLOBALS['config']['app']['url']}/listar-usuarios.php?error={$message}");
     exit();
   }
 
 }else {
   $message = "Você não selecionou um usuário!";
-  header("Location: http://localhost:8080/listar-usuarios.php?error={$message}");
+  header("Location: http://{$GLOBALS['config']['app']['url']}/listar-usuarios.php?error={$message}");
   exit();
 }
 ?>

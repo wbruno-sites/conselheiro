@@ -5,7 +5,7 @@ if($_GET['id']) {
 
   if($_GET['id'] == $_SESSION['user']['id']) {
     $message = "Você não pode remover o próprio cadastro!";
-    header("Location: http://localhost:8080/listar-usuarios.php?error={$message}");
+    header("Location: http://{$GLOBALS['config']['app']['url']}/listar-usuarios.php?error={$message}");
     exit();
   }
 
@@ -15,14 +15,14 @@ if($_GET['id']) {
 
   if($result != null) {
     $message = "Usuário deletado com sucesso!";
-    header("Location: http://localhost:8080/listar-usuarios.php?success={$message}");
+    header("Location: http://{$GLOBALS['config']['app']['url']}/listar-usuarios.php?success={$message}");
     exit();
   }
 
   $message = "Erro ao remover usuario!";
-  header("Location: http://localhost:8080/listar-usuarios.php?error={$message}");
+  header("Location: http://{$GLOBALS['config']['app']['url']}/listar-usuarios.php?error={$message}");
   exit();
 }
 $message = "Erro ao remover usuario!";
-header("Location: http://localhost:8080/listar-usuarios.php?error={$message}");
+header("Location: http://{$GLOBALS['config']['app']['url']}/listar-usuarios.php?error={$message}");
 exit();

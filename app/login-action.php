@@ -11,12 +11,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if($rows) {
       $_SESSION['user'] = $rows;
-      header("Location: http://localhost:8080/index.php");
+      header("Location: http://{$GLOBALS['config']['app']['url']}/index.php");
       exit();
     }
 
     $message = "Usuário ou senha invalido!";
     $message = "Usuário ou senha invalido!";
-    header("Location: http://localhost:8080/login.php?error=$message");
+    header("Location: http://{$GLOBALS['config']['app']['url']}/login.php?error=$message");
   }
 }

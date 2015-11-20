@@ -8,11 +8,11 @@ if($_POST['login'] && $_POST['password']) {
 
   if($result != null) {
     $message = "Usuário cadastrado com sucesso!";
-    header("Location: http://localhost:8080/listar-usuarios.php?success={$message}");
+    header("Location: http://{$GLOBALS['config']['app']['url']}/listar-usuarios.php?success={$message}");
     exit();
   }
 
   $message = "Ouve um erro ao alterar o usuário. Tente novamente!";
-  header("Location: http://localhost:8080/cadastrar-usuario.php?error={$message}");
+  header("Location: http://{$GLOBALS['config']['app']['url']}/cadastrar-usuario.php?error={$message}");
   exit();
 }

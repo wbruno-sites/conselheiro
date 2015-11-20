@@ -8,12 +8,12 @@ if($_POST['id'] && $_POST['login'] && $_POST['password']) {
 
   if($result != null) {
     $message = "Usuário modificado com sucesso!";
-    header("Location: http://localhost:8080/listar-usuarios.php?success={$message}");
+    header("Location: http://{$GLOBALS['config']['app']['url']}/listar-usuarios.php?success={$message}");
     exit();
   }
 
-  header("Location: http://localhost:8080/editar-usuario.php?id={$_POST['id']}");
+  header("Location: http://{$GLOBALS['config']['app']['url']}/editar-usuario.php?id={$_POST['id']}");
   exit();
 }
-header("Location: http://localhost:8080/listar-usuarios.php");
+header("Location: http://{$GLOBALS['config']['app']['url']}/listar-usuarios.php");
 exit();

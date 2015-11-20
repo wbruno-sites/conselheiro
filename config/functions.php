@@ -38,7 +38,7 @@ function loadModel($model)
 function authenticate()
 {
   if(!$_SESSION['user']) {
-    header("Location: http://localhost:8080/login.php");
+    header("Location: http://{$GLOBALS['config']['app']['url']}/login.php");
     exit();
   }
 }
