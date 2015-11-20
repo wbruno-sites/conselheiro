@@ -81,7 +81,19 @@ require('./models/School.php');
         <td><?php echo $data->id; ?></td>
         <td><?php echo $data->region_name; ?></td>
         <td><?php echo $data->name; ?></td>
-        <td><input type="tel" name="votes_amount[]" pattern="[0-9]+" required="required" maxlength="10" class="form-control" value="<?php echo $data->votes_amount; ?>" /></td>
+        <td>
+          <?php if(isAdmin()) { ?>
+          <input type="tel" name="votes_amount[]" pattern="[0-9]+" required="required" maxlength="10" class="form-control" value="<?php echo $data->votes_amount; ?>" />
+          <?php } else {
+            if($data->status === 'confirmed') {
+              echo $data->votes_amount;
+            } else { ?>
+          <input type="tel" name="votes_amount[]" pattern="[0-9]+" required="required" maxlength="10" class="form-control" value="<?php echo $data->votes_amount; ?>" />
+          <?php
+              }
+            }
+          ?>
+        </td>
         <td class="status"><?php echo $status; ?></td>
         <?= (isAdmin()) ? '<td><button type="button" class="btn btn-primary btn-confirm" tabindex="-1">Confirmar</button></td>' : null ; ?>
       </tr>

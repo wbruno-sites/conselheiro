@@ -1,7 +1,7 @@
 var $menu_toggle = $("#menu-toggle"),
     $votes_amount = $('input[name="votes_amount[]"]'),
     $school_id = $('select[name="school_id"]'),
-    $room_id = $('select[name="room_id"'),
+    $room_id = $('select[name="room_id"]'),
     $btn_confirm = $('.btn-confirm');
 
 
