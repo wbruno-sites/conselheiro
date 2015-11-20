@@ -68,7 +68,7 @@ if (_get('school_id') && _get('room_id')) {
       <td><?php echo $data->id; ?></td>
       <td><?php echo $data->region_name; ?></td>
       <td><?php echo $data->name; ?></td>
-      <td><input type="tel" name="votes_amount[]" pattern="[0-9]+" required="required" maxlength="10" class="form-control" /></td>
+      <td><input type="tel" name="votes_amount[]" pattern="[0-9]+" required="required" maxlength="10" class="form-control" value="<?php echo $data->votes_amount; ?>" /></td>
     </tr>
 <?php
   }
