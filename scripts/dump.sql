@@ -1,124 +1,109 @@
--- MySQL dump 10.13  Distrib 5.6.27, for osx10.11 (x86_64)
---
--- Host: localhost    Database: apuracao
--- ------------------------------------------------------
--- Server version	5.6.27
+-- Valentina Studio --
+-- MySQL dump --
+-- ---------------------------------------------------------
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+-- ---------------------------------------------------------
 
---
--- Table structure for table `candidates`
---
 
-DROP TABLE IF EXISTS `candidates`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `candidates` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(60) DEFAULT NULL,
-  `region_id` int(11) DEFAULT NULL,
-  `status` varchar(20),
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+-- CREATE DATABASE "apuracao" ------------------------------
+CREATE DATABASE IF NOT EXISTS `apuracao` CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `apuracao`;
+-- ---------------------------------------------------------
 
---
--- Dumping data for table `candidates`
---
 
-LOCK TABLES `candidates` WRITE;
-/*!40000 ALTER TABLE `candidates` DISABLE KEYS */;
-/*!40000 ALTER TABLE `candidates` ENABLE KEYS */;
-UNLOCK TABLES;
+-- CREATE TABLE "candidates" -------------------------------
+DROP TABLE IF EXISTS `candidates` CASCADE;
 
---
--- Table structure for table `regions`
---
+CREATE TABLE `candidates` ( 
+	`id` Int( 11 ) AUTO_INCREMENT NOT NULL, 
+	`name` VarChar( 60 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL, 
+	`region_id` Int( 11 ) NULL, 
+	`status` VarChar( 20 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+	 PRIMARY KEY ( `id` )
+ )
+CHARACTER SET = utf8
+COLLATE = utf8_general_ci
+ENGINE = InnoDB
+AUTO_INCREMENT = 221;
+-- ---------------------------------------------------------
 
-DROP TABLE IF EXISTS `regions`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `regions` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(60) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `regions`
---
+-- CREATE TABLE "regions" ----------------------------------
+DROP TABLE IF EXISTS `regions` CASCADE;
 
-LOCK TABLES `regions` WRITE;
-/*!40000 ALTER TABLE `regions` DISABLE KEYS */;
-/*!40000 ALTER TABLE `regions` ENABLE KEYS */;
-UNLOCK TABLES;
+CREATE TABLE `regions` ( 
+	`id` Int( 11 ) AUTO_INCREMENT NOT NULL, 
+	`name` VarChar( 60 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+	 PRIMARY KEY ( `id` )
+ )
+CHARACTER SET = utf8
+COLLATE = utf8_general_ci
+ENGINE = InnoDB
+AUTO_INCREMENT = 7;
+-- ---------------------------------------------------------
 
---
--- Table structure for table `schools`
---
 
-DROP TABLE IF EXISTS `schools`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `schools` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(60) DEFAULT NULL,
-  `rooms_amount` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+-- CREATE TABLE "schools" ----------------------------------
+DROP TABLE IF EXISTS `schools` CASCADE;
 
---
--- Dumping data for table `schools`
---
+CREATE TABLE `schools` ( 
+	`id` Int( 11 ) AUTO_INCREMENT NOT NULL, 
+	`name` VarChar( 60 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL, 
+	`rooms_amount` Int( 11 ) NULL,
+	 PRIMARY KEY ( `id` )
+ )
+CHARACTER SET = utf8
+COLLATE = utf8_general_ci
+ENGINE = InnoDB
+AUTO_INCREMENT = 23;
+-- ---------------------------------------------------------
 
-LOCK TABLES `schools` WRITE;
-/*!40000 ALTER TABLE `schools` DISABLE KEYS */;
-/*!40000 ALTER TABLE `schools` ENABLE KEYS */;
-UNLOCK TABLES;
 
---
--- Table structure for table `votes`
---
+-- CREATE TABLE "users" ------------------------------------
+DROP TABLE IF EXISTS `users` CASCADE;
 
-DROP TABLE IF EXISTS `votes`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `votes` (
-  `candidate_id` int(11) DEFAULT NULL,
-  `school_id` int(11) DEFAULT NULL,
-  `room_id` int(11) DEFAULT NULL,
-  `votes_amount` int(11) DEFAULT NULL,
-  `status` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+CREATE TABLE `users` ( 
+	`id` Int( 255 ) AUTO_INCREMENT NOT NULL, 
+	`login` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, 
+	`password` VarChar( 100 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, 
+	`admin` Enum( 'admin', 'user' ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+	 PRIMARY KEY ( `id` )
+, 
+	CONSTRAINT `unique_login` UNIQUE( `login` ) )
+CHARACTER SET = utf8
+COLLATE = utf8_general_ci
+ENGINE = InnoDB
+AUTO_INCREMENT = 2;
+-- ---------------------------------------------------------
 
---
--- Dumping data for table `votes`
---
 
-LOCK TABLES `votes` WRITE;
-/*!40000 ALTER TABLE `votes` DISABLE KEYS */;
-/*!40000 ALTER TABLE `votes` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+-- CREATE TABLE "votes" ------------------------------------
+DROP TABLE IF EXISTS `votes` CASCADE;
+
+CREATE TABLE `votes` ( 
+	`candidate_id` Int( 11 ) NULL, 
+	`school_id` Int( 11 ) NULL, 
+	`room_id` Int( 11 ) NULL, 
+	`votes_amount` Int( 11 ) NULL, 
+	`status` VarChar( 20 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL
+ )
+CHARACTER SET = utf8
+COLLATE = utf8_general_ci
+ENGINE = InnoDB;
+-- ---------------------------------------------------------
+
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+-- ---------------------------------------------------------
 
--- Dump completed on 2015-11-20 11:06:39
+
