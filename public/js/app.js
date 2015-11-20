@@ -1,25 +1,24 @@
+var $menu_toggle = $("#menu-toggle"),
+    $votes_amount = $('input[name="votes_amount[]"]'),
+    $school_id = $('select[name="school_id"]'),
+    $room_id = $('select[name="room_id"');
+
+
 /* Menu Toggle */
-$("#menu-toggle").click(function(e) {
+$menu_toggle.on('click', function(e) {
   e.preventDefault();
   $("#wrapper").toggleClass("toggled");
 });
 
-$('input[name="votes_amount[]"]').on('keyup', function() {
+$votes_amount.on('keyup', function() {
   mascara(this, mnum);
 });
-
-
-var $school_id = $('select[name="school_id"]'),
-    $room_id = $('select[name="room_id"');
 
 $school_id.on('change', function() {
   var $this = $(this),
       rooms_amount = $(this).find('option:selected').data('rooms-amount'),
       options = [],
       i = 1;
-
-
-      console.log(rooms_amount);
 
   while(rooms_amount--) {
     options.push('<option values="' + i + '">' + i + '</option>');
