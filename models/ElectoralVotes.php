@@ -30,6 +30,11 @@ class ElectoralVotes
     return $this->mysqli->query($sql);
   }
 
+  public function total() {
+    $sql = "SELECT c.id, c.name, SUM(votes_amount) AS total FROM candidates c INNER JOIN votes v ON v.candidate_id = c.id GROUP BY c.id ORDER BY total DESC";
+    return $this->mysqli->query($sql);
+  }
+
   public function getStatusLabel($status) {
     switch ($status) {
      case 'pending':
