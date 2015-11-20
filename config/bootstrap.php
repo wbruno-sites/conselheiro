@@ -11,6 +11,9 @@ $GLOBALS['error'] = false;
 
 session_start();
 
+header('Content-Type: text/html; charset=utf-8');
+
+
 # INCLUDE
 require_once('database.php');
 require_once('functions.php');
