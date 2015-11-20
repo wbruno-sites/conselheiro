@@ -1,4 +1,4 @@
 <?php
-require_once('./config/functions.php');
+require_once('./config/bootstrap.php');
 
 loadView('votos');

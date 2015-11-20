@@ -1,5 +1,5 @@
 <?php
-require_once('./config/functions.php');
+require_once('./config/bootstrap.php');
 
 loginAction();
 loadView('login', false);
