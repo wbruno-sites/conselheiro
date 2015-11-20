@@ -67,7 +67,7 @@ require('./models/School.php');
         <th>Nome</th>
         <th>Votos</th>
         <th>Status</th>
-        <th></th>
+        <?= (isAdmin()) ? '<th>Confirmar</th>' : null ; ?>
       </tr>
     </thead>
     <tbody>
@@ -83,7 +83,7 @@ require('./models/School.php');
         <td><?php echo $data->name; ?></td>
         <td><input type="tel" name="votes_amount[]" pattern="[0-9]+" required="required" maxlength="10" class="form-control" value="<?php echo $data->votes_amount; ?>" /></td>
         <td class="status"><?php echo $status; ?></td>
-        <td><button type="button" class="btn btn-primary btn-confirm" tabindex="-1">Confirmar</button></td>
+        <?= (isAdmin()) ? '<td><button type="button" class="btn btn-primary btn-confirm" tabindex="-1">Confirmar</button></td>' : null ; ?>
       </tr>
   <?php
     }
