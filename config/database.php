@@ -1,5 +1,7 @@
 <?php
 
-$configs = parse_ini_file(CONFIG_FILE);
+$GLOBALS['mysqli'] = new mysqli($GLOBALS['config']['mysql']['host'], $GLOBALS['config']['mysql']['user'], $GLOBALS['config']['mysql']['password'], $GLOBALS['config']['mysql']['database']);
 
-$GLOBALS['mysqli'] = new mysqli($configs['mysql']['host'], $configs['mysql']['user'], $configs['mysql']['password'], $configs['mysql']['database']);
+if($GLOBALS['mysqli']->connect_errno) {
+  echo $GLOBALS['mysqli']->connect_errno;
+}

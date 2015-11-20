@@ -23,6 +23,7 @@ function authenticate()
 {
   if(!$_SESSION['user']) {
     header("Location: http://localhost:8080/login.php");
+    exit();
   }
 }
 
@@ -33,12 +34,21 @@ function _get($key)
 
 function loginAction()
 {
-  if($_POST){
+  if($_POST['login'] && $_POST['password']){
 
-    // Autenticate $user
-    #$_SESSION['user'] = $user
+    require_once('./models/User.php');
 
-    // If error
+    $User = new User($GLOBALS['mysqli']);
+
+    $result = $User->login($_POST['login'],$_POST['password']);
+    $rows = $result->fetch_array(MYSQLI_ASSOC);
+
+    if($rows) {
+      $_SESSION['user'] = $rows;
+      header("Location: http://localhost:8080/index.php");
+      exit();
+    }
+
     $message = "Usuário ou senha invalido!";
     header("Location: http://localhost:8080/login.php?error=$message");
   }
