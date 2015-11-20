@@ -10,9 +10,16 @@ require('./models/School.php');
 <?php
   $ev = new School($GLOBALS['mysqli']);
   $query = $ev->getAll();
+  $amount = 0;
   while($data = $query->fetch_object()) {
+    $selected = '';
+
+    if ($data->id == _get('school_id')){
+      $amount = $data->rooms_amount;
+      $selected = ' selected="selected"';
+    }
 ?>
-    <option value="<?php echo $data->id; ?>" data-rooms-amount="<?php echo $data->rooms_amount; ?>"><?php echo $data->id, 'º ', $data->name; ?></option>
+    <option value="<?php echo $data->id; ?>" data-rooms-amount="<?php echo $data->rooms_amount; ?>"<?php echo $selected; ?>><?php echo $data->id, 'º ', $data->name; ?></option>
 <?php
   }
 ?>
@@ -22,6 +29,16 @@ require('./models/School.php');
 <div class="col-md-3">
   <label>SALA</label>
   <select name="room_id" class="form-control">
+<?php
+
+  $i = 1;
+  while($amount--) {
+?>
+    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+<?php
+  $i++;
+  }
+?>
   </select>
 </div><!-- .col-md-3 -->
 
@@ -38,6 +55,7 @@ require('./models/School.php');
   </thead>
   <tbody>
 <?php
+if (_get('school_id') && _get('room_id')) {
   $ev = new ElectoralVotes($GLOBALS['mysqli']);
   $query = $ev->getCalculation(_get('school_id'), _get('room_id'));
   while($data = $query->fetch_object()) {
@@ -50,6 +68,11 @@ require('./models/School.php');
     </tr>
 <?php
   }
+} else {
+?>
+  <p>Você deve selecionar alguma escola e alguma sala antes.</p>
+<?php
+}
 ?>
   </tbody>
 </table>

@@ -27,10 +27,10 @@ $school_id.on('change', function() {
 
   $room_id.html(options.join(','));
 
-  history.pushState({}, '', '?school_id=' + $this.val() + '&room_id=1');
+  location.href = '?school_id=' + $this.val() + '&room_id=1';
 });
 
 $room_id.on('change', function() {
   var $this = $(this);
-  history.pushState({}, '', '?school_id=' + $school_id.val() + '&room_id=' + $this.val());
+  location.href = '?school_id=' + $school_id.val() + '&room_id=' + $this.val();
 });
