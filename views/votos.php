@@ -59,7 +59,7 @@ require('./models/School.php');
   <?php
   if (_get('school_id') && _get('room_id')) {
   ?>
-  <table class="table table-striped table-hover">
+  <table id="votes-table" class="table table-striped table-hover">
     <thead>
       <tr>
         <th>Número</th>
@@ -107,4 +107,10 @@ require('./models/School.php');
   ?>
     </tbody>
   </table>
+
+<?php if (isAdmin()) {?>
+  <div class="col-sm-6 col-sm-offset-3">
+    <button class="btn btn-block btn-lg btn-success" id="confirm-all">Confirmar Todos</button>
+  </div>
+<?php } ?>
 </div>

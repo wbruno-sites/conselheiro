@@ -7,6 +7,7 @@ ini_set('display_erros', false);
 define('CONFIG_FILE', 'config.ini');
 
 $GLOBALS['config'] = parse_ini_file(CONFIG_FILE);
+$GLOBALS['error'] = false;
 
 session_start();
 
