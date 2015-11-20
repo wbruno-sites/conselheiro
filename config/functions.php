@@ -12,11 +12,16 @@ function loadView($view, $sidebar = true)
     <div class="container-fluid">
     <div class="row">
     <?php
-    require_once("./views/$view.php");
+    $file = "./views/{$view}.php";
+    if (is_file($file)) {
+      require_once "./views/{$view}.php";
+    } else {
+      require './views/not-found.php';
+    }
     ?>
     </div></div>
     <?php
-    require_once('./includes/footer.php');
+    require_once './includes/footer.php';
 }
 
 function loadModel($model)

@@ -26,6 +26,12 @@
       </a>
     </li>
     <li>
+      <a href="relatorios.php?report=school">
+        <span class="glyphicon glyphicon-signal"></span>
+        Relatórios - Escola
+      </a>
+    </li>
+    <li>
       <a href="listar-usuarios.php">
         <span class="glyphicon glyphicon-user"></span> Usuários
       </a>
