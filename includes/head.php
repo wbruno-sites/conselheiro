@@ -13,8 +13,9 @@
     <link href="public/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="public/css/simple-sidebar.css" rel="stylesheet">
-    <link href="public/css/style.css" rel="stylesheet">
+    <link href="public/css/simple-sidebar.css" rel="stylesheet" media="screen">
+    <link href="public/css/style.css" rel="stylesheet" media="screen">
+    <link href="public/css/print.css" rel="stylesheet" media="print">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

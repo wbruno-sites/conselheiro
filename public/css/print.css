@@ -1,0 +1,11 @@
+
+@media print {
+  body { font-size: 12px; }
+  h1 { font-size: 1.6em; }
+  h2 { font-size: 1.2em; }
+
+  html body #sidebar-wrapper { display: none !important; }
+  html body #wrapper { padding-left: 0 !important; }
+  .btn { display: none; }
+  #page-content-wrapper { width: 100%; }
+}
