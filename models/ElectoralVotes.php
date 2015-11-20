@@ -56,6 +56,20 @@ class ElectoralVotes
     return $this->mysqli->query($sql);
   }
 
+  public function school()
+  {
+    $sql = "SELECT c.id, v.school_id, s.name as school_name, c.name, SUM(votes_amount) AS total
+      FROM candidates c
+      INNER JOIN votes v
+        ON v.candidate_id = c.id
+      INNER JOIN schools s
+        ON s.id = v.school_id
+      GROUP BY v.school_id, c.id
+      ORDER BY v.school_id, c.id";
+
+    return $this->mysqli->query($sql);
+  }
+
   public function getStatusLabel($status)
   {
     switch ($status) {
