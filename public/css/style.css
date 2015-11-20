@@ -1,7 +1,9 @@
 .form-login{
-  margin-top: 50px;
-  /*margin-left: -250px;*/
-  width: 300px;
-  padding: 20px;
+  position: absolute;
+  width: 350px;
+  top: 50px;
+  left: 50%;
+  margin-left: -175px;
+  padding: 20px 40px 40px;
   border: 1px solid #ccc;
 }
