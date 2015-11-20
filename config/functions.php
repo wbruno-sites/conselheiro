@@ -42,6 +42,11 @@ function _get($key)
   return isset($_GET[$key]) ? $_GET[$key] : null;
 }
 
+function _post($key)
+{
+  return isset($_POST[$key]) ? $_POST[$key] : null;
+}
+
 function loginAction()
 {
   if($_POST['login'] && $_POST['password']){

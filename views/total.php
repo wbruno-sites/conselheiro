@@ -2,7 +2,7 @@
 require('./models/ElectoralVotes.php');
 ?>
 
-<h1>Relatórios</h1>
+<h1>Relatórios - Total</h1>
 
 
 <table class="table table-striped table-hover">

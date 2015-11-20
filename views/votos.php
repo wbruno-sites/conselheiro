@@ -3,6 +3,8 @@ require('./models/ElectoralVotes.php');
 require('./models/School.php');
 ?>
 
+<h1>Apurar votos</h1>
+
 <div class="col-md-9">
   <label>NOME DA ESCOLA</label>
   <select name="school_id" class="form-control">
