@@ -64,7 +64,7 @@ if (_get('school_id') && _get('room_id')) {
   $query = $ev->getCalculation(_get('school_id'), _get('room_id'));
   while($data = $query->fetch_object()) {
 ?>
-    <tr>
+    <tr data-candidate-id="<?php echo $data->id; ?>" data-school-id="<?php echo _get('school_id'); ?>" data-room-id="<?php echo _get('room_id'); ?>">
       <td><?php echo $data->id; ?></td>
       <td><?php echo $data->region_name; ?></td>
       <td><?php echo $data->name; ?></td>
