@@ -1,26 +1,27 @@
+<?php
+require('./models/ElectoralVotes.php');
+require('./models/School.php');
+?>
 
 <div class="col-md-9">
   <label>NOME DA ESCOLA</label>
   <select name="school_id" class="form-control">
-    <option></option>
-
+    <option>Selecione</option>
+<?php
+  $ev = new School($GLOBALS['mysqli']);
+  $query = $ev->getAll();
+  while($data = $query->fetch_object()) {
+?>
+    <option value="<?php echo $data->id; ?>" data-rooms-amount="<?php echo $data->rooms_amount; ?>"><?php echo $data->id, 'º ', $data->name; ?></option>
+<?php
+  }
+?>
   </select>
 </div><!-- .col-md-9 -->
 
 <div class="col-md-3">
   <label>SALA</label>
   <select name="room_id" class="form-control">
-    <option></option>
-    <option>1</option>
-    <option>2</option>
-    <option>3</option>
-    <option>4</option>
-    <option>5</option>
-    <option>6</option>
-    <option>7</option>
-    <option>8</option>
-    <option>9</option>
-    <option>10</option>
   </select>
 </div><!-- .col-md-3 -->
 
@@ -37,9 +38,7 @@
   </thead>
   <tbody>
 <?php
-  require('./models/ElectoralVotes.php');
-
-  $ev = new ElectoralVotes($mysqli);
+  $ev = new ElectoralVotes($GLOBALS['mysqli']);
   $query = $ev->getCalculation(_get('school_id'), _get('room_id'));
   while($data = $query->fetch_object()) {
 ?>
