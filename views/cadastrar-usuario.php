@@ -5,11 +5,11 @@
       <legend>Cadastrar User</legend>
       <div class="form-group">
         <label for="login">Login</label>
-        <input type="text" name="login" id="login" class="form-control">
+        <input type="email" name="login" id="login" class="form-control" required="required" />
       </div>
       <div class="form-group">
         <label for="password">Senha</label>
-        <input type="password" name="password" id="password" class="form-control">
+        <input type="password" name="password" id="password" class="form-control" required="required" />
       </div>
       <div class="form-group">
         <input type="checkbox" name="admin" id="admin" value="admin">
