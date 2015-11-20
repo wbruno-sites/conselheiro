@@ -41,30 +41,7 @@ function _get($key)
 {
   return isset($_GET[$key]) ? $_GET[$key] : null;
 }
-
 function _post($key)
 {
   return isset($_POST[$key]) ? $_POST[$key] : null;
-}
-
-function loginAction()
-{
-  if($_POST['login'] && $_POST['password']){
-
-    loadModel('User');
-
-    $user = new User($GLOBALS['mysqli']);
-
-    $result = $user->login($_POST['login'],$_POST['password']);
-    $rows = $result->fetch_array(MYSQLI_ASSOC);
-
-    if($rows) {
-      $_SESSION['user'] = $rows;
-      header("Location: http://localhost:8080/index.php");
-      exit();
-    }
-
-    $message = "Usuário ou senha invalido!";
-    header("Location: http://localhost:8080/login.php?error=$message");
-  }
 }
