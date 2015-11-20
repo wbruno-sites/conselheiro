@@ -1,6 +1,6 @@
 <?php
 require '../config/bootstrap.php';
-require '../models/ElectoralVotes.php';
+loadModel('ElectoralVotes');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $result = [];

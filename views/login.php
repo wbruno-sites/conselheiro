@@ -1,4 +1,4 @@
-<form action="" method="POST" class="form-login">
+<form action="app/login-action.php" method="POST" class="form-login">
   <fieldset>
     <legend>Login</legend>
     <div class="form-group">

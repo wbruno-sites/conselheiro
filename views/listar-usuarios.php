@@ -1,5 +1,6 @@
 <div class="col-md-12">
   <h1>Usuários</h1>
+  <a href="cadastrar-usuario.php" class="btn btn-success">Adicionar Novo</a>
   <table class="table table-striped table-hover">
     <thead>
       <tr>

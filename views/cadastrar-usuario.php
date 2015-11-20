@@ -1,6 +1,6 @@
 <br><br>
 <div class="col-md-12">
-  <form action="" method="POST">
+  <form action="app/insert-user-action.php" method="POST">
     <fieldset>
       <legend>Cadastrar User</legend>
       <div class="form-group">
