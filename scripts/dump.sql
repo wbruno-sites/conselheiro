@@ -20,10 +20,10 @@ USE `apuracao`;
 -- CREATE TABLE "candidates" -------------------------------
 DROP TABLE IF EXISTS `candidates` CASCADE;
 
-CREATE TABLE `candidates` ( 
-	`id` Int( 11 ) AUTO_INCREMENT NOT NULL, 
-	`name` VarChar( 60 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL, 
-	`region_id` Int( 11 ) NULL, 
+CREATE TABLE `candidates` (
+	`id` Int( 11 ) AUTO_INCREMENT NOT NULL,
+	`name` VarChar( 60 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+	`region_id` Int( 11 ) NULL,
 	`status` VarChar( 20 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
 	 PRIMARY KEY ( `id` )
  )
@@ -37,8 +37,8 @@ AUTO_INCREMENT = 221;
 -- CREATE TABLE "regions" ----------------------------------
 DROP TABLE IF EXISTS `regions` CASCADE;
 
-CREATE TABLE `regions` ( 
-	`id` Int( 11 ) AUTO_INCREMENT NOT NULL, 
+CREATE TABLE `regions` (
+	`id` Int( 11 ) AUTO_INCREMENT NOT NULL,
 	`name` VarChar( 60 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
 	 PRIMARY KEY ( `id` )
  )
@@ -52,9 +52,9 @@ AUTO_INCREMENT = 7;
 -- CREATE TABLE "schools" ----------------------------------
 DROP TABLE IF EXISTS `schools` CASCADE;
 
-CREATE TABLE `schools` ( 
-	`id` Int( 11 ) AUTO_INCREMENT NOT NULL, 
-	`name` VarChar( 60 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL, 
+CREATE TABLE `schools` (
+	`id` Int( 11 ) AUTO_INCREMENT NOT NULL,
+	`name` VarChar( 60 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
 	`rooms_amount` Int( 11 ) NULL,
 	 PRIMARY KEY ( `id` )
  )
@@ -68,13 +68,13 @@ AUTO_INCREMENT = 23;
 -- CREATE TABLE "users" ------------------------------------
 DROP TABLE IF EXISTS `users` CASCADE;
 
-CREATE TABLE `users` ( 
-	`id` Int( 255 ) AUTO_INCREMENT NOT NULL, 
-	`login` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, 
-	`password` VarChar( 100 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, 
+CREATE TABLE `users` (
+	`id` Int( 255 ) AUTO_INCREMENT NOT NULL,
+	`login` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+	`password` VarChar( 100 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
 	`admin` Enum( 'admin', 'user' ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
 	 PRIMARY KEY ( `id` )
-, 
+,
 	CONSTRAINT `unique_login` UNIQUE( `login` ) )
 CHARACTER SET = utf8
 COLLATE = utf8_general_ci
@@ -86,11 +86,11 @@ AUTO_INCREMENT = 2;
 -- CREATE TABLE "votes" ------------------------------------
 DROP TABLE IF EXISTS `votes` CASCADE;
 
-CREATE TABLE `votes` ( 
-	`candidate_id` Int( 11 ) NULL, 
-	`school_id` Int( 11 ) NULL, 
-	`room_id` Int( 11 ) NULL, 
-	`votes_amount` Int( 11 ) NULL, 
+CREATE TABLE `votes` (
+	`candidate_id` Int( 11 ) NULL,
+	`school_id` Int( 11 ) NULL,
+	`room_id` Int( 11 ) NULL,
+	`votes_amount` Int( 11 ) NULL,
 	`status` VarChar( 20 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL
  )
 CHARACTER SET = utf8
