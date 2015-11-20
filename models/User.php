@@ -12,6 +12,24 @@ class User
     return $this->mysqli->query("SELECT * FROM users");
   }
 
+  public function findUser($id)
+  {
+    $sql = "SELECT * FROM users WHERE id={$id} LIMIT 1";
+    return $this->mysqli->query($sql);
+  }
+
+  public function updateUser($id, $login, $password, $type)
+  {
+    $sql = "UPDATE users SET login='{$login}', password='{$this->hashPassWord($password)}', admin='{$type}' WHERE id={$id}";
+    return $this->mysqli->query($sql);
+  }
+
+  public function deleteUser($id)
+  {
+    $sql = "DELETE FROM users WHERE id={$id}";
+    return $this->mysqli->query($sql);
+  }
+
   public function login($login, $password)
   {
     $sql = "SELECT login, admin FROM users WHERE login='{$login}' AND password='{$this->hashPassWord($password)}'";

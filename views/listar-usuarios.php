@@ -21,8 +21,8 @@
           <td><?= $data->login; ?></td>
           <td><?= $data->admin; ?></td>
           <td>
-            <button class="btn btn-primary">Alterar</button>
-            <button class="btn btn-danger">Deletar</button>
+            <a href="editar-usuario.php?id=<?= $data->id; ?>" class="btn btn-primary">Alterar</a>
+            <a href="app/delete-user-action.php?id=<?= $data->id; ?>" class="btn btn-danger">Deletar</a>
           </td>
         </tr>
       <?php } ?>
