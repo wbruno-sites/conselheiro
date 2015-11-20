@@ -32,7 +32,7 @@ class User
 
   public function login($login, $password)
   {
-    $sql = "SELECT login, admin FROM users WHERE login='{$login}' AND password='{$this->hashPassWord($password)}'";
+    $sql = "SELECT id, login, admin FROM users WHERE login='{$login}' AND password='{$this->hashPassWord($password)}'";
     return $this->mysqli->query($sql);
   }
 
