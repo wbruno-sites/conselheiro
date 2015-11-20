@@ -27,6 +27,11 @@ function authenticate()
   }
 }
 
+function isAdmin()
+{
+  return $_SESSION['user']['admin'] === 'admin';
+}
+
 function _get($key)
 {
   return isset($_GET[$key]) ? $_GET[$key] : null;
