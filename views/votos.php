@@ -24,9 +24,6 @@
   </select>
 </div><!-- .col-md-3 -->
 
-</section><!-- .row -->
-
-<section class="row">
 <h2>CANDIDATOS</h2>
 
 <table>
@@ -39,11 +36,21 @@
     </tr>
   </thead>
   <tbody>
+<?php
+  require('./models/ElectoralVotes.php');
+
+  $ev = new ElectoralVotes($mysqli);
+  $query = $ev->getCalculation(_get('school_id'), _get('room_id'));
+  while($data = $query->fetch_object()) {
+?>
     <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td><input type="text" name="votes_amount[]" required="required" /></td>
+      <td><?php echo $data->id; ?></td>
+      <td><?php echo $data->name; ?></td>
+      <td><?php echo $data->region_id; ?></td>
+      <td><input type="text" name="votes_amount[]" required="required" maxlength="10" class="form-control" /></td>
     </tr>
+<?php
+  }
+?>
   </tbody>
 </table>

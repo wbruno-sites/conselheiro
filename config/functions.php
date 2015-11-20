@@ -25,3 +25,8 @@ function authenticate()
     header("Location: http://localhost:8080/login.php");
   }
 }
+
+function _get($key)
+{
+  return isset($_GET[$key]) ? $_GET[$key] : null;
+}
