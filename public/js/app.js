@@ -21,6 +21,10 @@ $votes_amount.on('blur', function() {
 
   data.votes_amount = $this.val();
 
+  if(!data.votes_amount) {
+    return;
+  }
+
   $.ajax({
     url: 'compute-vote.php',
     data: data,
