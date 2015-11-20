@@ -12,13 +12,13 @@ class ElectoralVotes
     return $this->mysqli->query("
       SELECT c.id, c.name, r.name as region_name, votes_amount, v.status
         FROM candidates c
-        INNER JOIN regions r
+        LEFT JOIN regions r
           ON c.region_id = r.id
         LEFT JOIN votes v
           ON v.candidate_id = c.id
             AND v.school_id = '{$school_id}'
             AND v.room_id = '{$room_id}'
-        ORDER BY c.id");
+        ORDER BY c.id = 221 DESC, c.id = 222 DESC, c.id ASC");
   }
 
   public function upsert($candidate_id, $school_id, $room_id, $votes_amount, $status)
