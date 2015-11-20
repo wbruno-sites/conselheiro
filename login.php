@@ -1,4 +1,4 @@
 <?php
 require_once('./config/functions.php');
 
-loadView('votos');
+loadView('login', false);
