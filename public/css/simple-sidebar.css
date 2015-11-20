@@ -33,6 +33,15 @@
     transition: all 0.5s ease;
 }
 
+.navbar-default{
+    margin: -20px;
+    padding: 10px;
+}
+
+.navbar-default .user-info {
+    margin-top: 10px;
+}
+
 #wrapper.toggled #sidebar-wrapper {
     width: 250px;
 }

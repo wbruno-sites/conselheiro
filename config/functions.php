@@ -5,7 +5,7 @@ function loadView($view, $sidebar = true)
     require_once('./includes/head.php');
     if($sidebar) {
       require_once('./includes/sidebar.php');
-      require_once('./includes/toggleMenu.php');
+      require_once('./includes/navbar.php');
     }
     ?>
     <!-- Page Content -->
