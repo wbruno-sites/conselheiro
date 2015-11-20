@@ -30,3 +30,16 @@ function _get($key)
 {
   return isset($_GET[$key]) ? $_GET[$key] : null;
 }
+
+function loginAction()
+{
+  if($_POST){
+
+    // Autenticate $user
+    #$_SESSION['user'] = $user
+
+    // If error
+    $message = "Usuário ou senha invalido!";
+    header("Location: http://localhost:8080/login.php?error=$message");
+  }
+}
