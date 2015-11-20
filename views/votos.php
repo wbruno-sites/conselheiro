@@ -42,8 +42,12 @@ require('./models/School.php');
   </select>
 </div><!-- .col-md-3 -->
 
+
 <h2>CANDIDATOS</h2>
 
+<?php
+if (_get('school_id') && _get('room_id')) {
+?>
 <table>
   <thead>
     <tr>
@@ -55,7 +59,6 @@ require('./models/School.php');
   </thead>
   <tbody>
 <?php
-if (_get('school_id') && _get('room_id')) {
   $ev = new ElectoralVotes($GLOBALS['mysqli']);
   $query = $ev->getCalculation(_get('school_id'), _get('room_id'));
   while($data = $query->fetch_object()) {
