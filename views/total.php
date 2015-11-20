@@ -5,6 +5,9 @@ require('./models/ElectoralVotes.php');
 <h1>Relatórios - Total</h1>
 
 
+<a href="?report=total&amp;order=id" class="btn btn-default">Ordenado por ID</a>
+<a href="?report=total&amp;order=total" class="btn btn-default">Ordenado por votos</a>
+
 <table class="table table-striped table-hover">
   <thead>
     <tr>
@@ -16,7 +19,7 @@ require('./models/ElectoralVotes.php');
   <tbody>
 <?php
   $ev = new ElectoralVotes($GLOBALS['mysqli']);
-  $query = $ev->total();
+  $query = $ev->total(_get('order'));
   while($data = $query->fetch_object()) {
 ?>
     <tr>
