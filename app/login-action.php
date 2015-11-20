@@ -2,11 +2,11 @@
 require '../config/bootstrap.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  if($_POST['login'] && $_POST['password']){
+  if(_post('login') && _post('password') ){
     require_once('../models/User.php');
     $user = new User($GLOBALS['mysqli']);
 
-    $result = $user->login($_POST['login'],$_POST['password']);
+    $result = $user->login( _post('login'), _post('password') );
     $rows = $result->fetch_array(MYSQLI_ASSOC);
 
     if($rows) {

@@ -1,10 +1,10 @@
 <?php
 require '../config/bootstrap.php';
 
-if($_POST['login'] && $_POST['password']) {
+if( _post('login') && _post('password') ) {
   require('../models/User.php');
   $user = new User($GLOBALS['mysqli']);
-  $result = $user->insertUser($_POST['login'], $_POST['password'], ($_POST['admin']) ? $_POST['admin'] : 'user');
+  $result = $user->insertUser( _post('login'), _post('password'), (_post('admin')) ? _post('admin') : 'user');
 
   if($result != null) {
     $message = "Usuário cadastrado com sucesso!";

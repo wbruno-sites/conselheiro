@@ -50,9 +50,9 @@ function isAdmin()
 
 function _get($key)
 {
-  return isset($_GET[$key]) ? $_GET[$key] : null;
+  return isset($_GET[$key]) ? filter_var($_GET[$key]) : null;
 }
 function _post($key)
 {
-  return isset($_POST[$key]) ? $_POST[$key] : null;
+  return isset($_POST[$key]) ? filter_var($_POST[$key]) : null;
 }
