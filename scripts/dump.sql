@@ -107,3 +107,4 @@ ENGINE = InnoDB;
 -- ---------------------------------------------------------
 
 
+ALTER TABLE votes ADD UNIQUE KEY `pk` (`candidate_id`, `school_id`, `room_id`);
