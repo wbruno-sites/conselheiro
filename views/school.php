@@ -23,7 +23,7 @@ require('./models/ElectoralVotes.php');
 <?php } ?>
 
 
-<h2><?php echo $data->school_name; ?></h2>
+<h2><?php echo $data->school_id, 'º ', $data->school_name; ?></h2>
 
 <?php $prev_school = $data->school_name; ?>
 
@@ -44,7 +44,7 @@ require('./models/ElectoralVotes.php');
     <tr>
       <td><?php echo $data->id ?></td>
       <td><?php echo $data->name ?></td>
-      <td><?php echo $data->school_name ?></td>
+      <td><?php echo $data->school_id ?></td>
       <td><?php echo $data->total ?></td>
     </tr>
 <?php

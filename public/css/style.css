@@ -7,3 +7,12 @@
   padding: 20px 40px 40px;
   border: 1px solid #ccc;
 }
+
+h1 { font-size: 2em; }
+h2 { font-size: 1.5em; }
+
+@media print {
+  #sidebar-wrapper { display: none !important; }
+  #wrapper { padding-left: 0; }
+  .btn { display: none; }
+}
