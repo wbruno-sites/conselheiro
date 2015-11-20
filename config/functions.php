@@ -19,6 +19,11 @@ function loadView($view, $sidebar = true)
     require_once('./includes/footer.php');
 }
 
+function loadModel($model)
+{
+  return require_once("./models/{$model}.php");
+}
+
 function authenticate()
 {
   if(!$_SESSION['user']) {
@@ -41,11 +46,11 @@ function loginAction()
 {
   if($_POST['login'] && $_POST['password']){
 
-    require_once('./models/User.php');
+    loadModel('User');
 
-    $User = new User($GLOBALS['mysqli']);
+    $user = new User($GLOBALS['mysqli']);
 
-    $result = $User->login($_POST['login'],$_POST['password']);
+    $result = $user->login($_POST['login'],$_POST['password']);
     $rows = $result->fetch_array(MYSQLI_ASSOC);
 
     if($rows) {
