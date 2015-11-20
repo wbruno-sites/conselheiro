@@ -9,6 +9,6 @@ class ElectoralVotes
 
   public function getCalculation($school_id, $room_id)
   {
-    return $this->mysqli->query('SELECT * FROM candidates');
+    return $this->mysqli->query('SELECT c.id, c.name, r.name as region_name FROM candidates c INNER JOIN regions r ON c.region_id = r.id ORDER BY c.id');
   }
 }

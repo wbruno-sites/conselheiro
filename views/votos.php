@@ -33,8 +33,9 @@ require('./models/School.php');
 
   $i = 1;
   while($amount--) {
+    $selected = _get('room_id') == $i ? ' selected="selected"' : '';
 ?>
-    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+    <option value="<?php echo $i; ?>"<?php echo $selected; ?>><?php echo $i; ?></option>
 <?php
   $i++;
   }
@@ -65,8 +66,8 @@ if (_get('school_id') && _get('room_id')) {
 ?>
     <tr>
       <td><?php echo $data->id; ?></td>
+      <td><?php echo $data->region_name; ?></td>
       <td><?php echo $data->name; ?></td>
-      <td><?php echo $data->region_id; ?></td>
       <td><input type="tel" name="votes_amount[]" pattern="[0-9]+" required="required" maxlength="10" class="form-control" /></td>
     </tr>
 <?php
