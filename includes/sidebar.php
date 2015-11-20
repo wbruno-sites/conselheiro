@@ -36,6 +36,11 @@
         <span class="glyphicon glyphicon-user"></span> Usuários
       </a>
     </li>
+    <li>
+      <a href="app/logout-action.php">
+        <span class="glyphicon glyphicon-off"></span> Sair
+      </a>
+    </li>
   </ul>
 </div>
 <!-- /#sidebar-wrapper -->

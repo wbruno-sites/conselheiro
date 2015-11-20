@@ -19,5 +19,4 @@
       <button class="btn btn-primary">Cadastrar</button>
     </fieldset>
   </form>
-
 </div>
