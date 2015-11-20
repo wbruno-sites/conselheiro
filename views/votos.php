@@ -47,7 +47,7 @@
       <td><?php echo $data->id; ?></td>
       <td><?php echo $data->name; ?></td>
       <td><?php echo $data->region_id; ?></td>
-      <td><input type="text" name="votes_amount[]" required="required" maxlength="10" class="form-control" /></td>
+      <td><input type="tel" name="votes_amount[]" pattern="[0-9]+" required="required" maxlength="10" class="form-control" /></td>
     </tr>
 <?php
   }
