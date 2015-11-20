@@ -14,6 +14,26 @@ $votes_amount.on('keyup', function() {
   mascara(this, mnum);
 });
 
+$votes_amount.on('blur', function() {
+  var $this = $(this),
+      $tr = $this.parents('tr'),
+      data = $tr.data();
+
+  data.votes_amount = $this.val();
+
+  $.ajax({
+    url: 'compute-vote.php',
+    data: data,
+    type: 'POST',
+  })
+  .then(function(data) {
+    console.log(data);
+  })
+  .fail(function(err) {
+    console.log(err);
+  })
+});
+
 $school_id.on('change', function() {
   var $this = $(this),
       rooms_amount = $(this).find('option:selected').data('rooms-amount'),
