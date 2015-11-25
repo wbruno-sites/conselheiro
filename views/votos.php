@@ -58,7 +58,7 @@ require('./models/School.php');
     $query = $ev->get_notes(_get('school_id'), _get('room_id'));
 
     $notes_amount = 0;
-    if ($query->num_rows) {
+    if ($query && $query->num_rows) {
       $data = $query->fetch_object();
       $notes_amount = $data->amount;
     }
