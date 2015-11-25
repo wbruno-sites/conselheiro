@@ -5,6 +5,7 @@ var $menu_toggle = $("#menu-toggle"),
     $confirmAll = $('#confirm-all'),
     $notes = $('#notes'),
     $notesTotal = $('#notes-total'),
+    $votesTotal = $('#votes-total'),
     $votesTable = $('#votes-table');
 
 var NOTES_QUANTITY = 5;
@@ -18,6 +19,12 @@ $menu_toggle.on('click', function(e) {
 
 $votes_amount.on('keyup', function() {
   mascara(this, mnum);
+});
+
+
+$votesTotal.val(votesCount());
+$votes_amount.on('keyup', function(argument) {
+  $votesTotal.val(votesCount());
 });
 
 $votes_amount.on('blur', function() {

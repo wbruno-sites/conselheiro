@@ -11,7 +11,7 @@
 h1 { font-size: 2em; }
 h2 { font-size: 1.5em; }
 
-#notes-box{
+.grey-box{
   display: inline-block;
   min-width: 230px;
   float: right;
@@ -22,11 +22,11 @@ h2 { font-size: 1.5em; }
   border-radius: 5px;
 }
 
-#notes-box h4{
+.grey-box h4{
   margin: 0 auto 10px;
 }
 
-#notes-box input{
+.grey-box input{
   width: 100px;
   display: inline-block;
 }

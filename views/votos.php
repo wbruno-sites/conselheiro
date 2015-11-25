@@ -65,10 +65,16 @@ require('./models/School.php');
 ?>
 
 <div class="col-md-12">
-  <div id="notes-box" data-schoolId="<?php echo _get('school_id'); ?>" data-roomId="<?php echo _get('room_id'); ?>" >
+  <div id="total-box" class="grey-box">
+    <h4>Quantidade de votos da sala</h4>
+    <input type="text" pattern="[0-9]+" required="required" class="form-control" id="votes-total" value="" disabled="disabled" />
+  </div>
+
+  <div id="notes-box" class="grey-box"data-schoolId="<?php echo _get('school_id'); ?>" data-roomId="<?php echo _get('room_id'); ?>" >
     <h4>Quantidade de cédulas da sala</h4>
     <input type="text" pattern="[0-9]+" required="required" class="form-control" id="notes" value="<?php echo $notes_amount; ?>" /> <strong>(x 5):</strong> <span id="notes-total">0</span>
   </div>
+
   <h2>CANDIDATOS</h2>
 
   <?php
