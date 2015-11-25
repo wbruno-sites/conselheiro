@@ -98,6 +98,18 @@ COLLATE = utf8_general_ci
 ENGINE = InnoDB;
 -- ---------------------------------------------------------
 
+-- CREATE TABLE "notes" ------------------------------------
+DROP TABLE IF EXISTS `notes` CASCADE;
+
+CREATE TABLE `notes` (
+	`school_id` Int( 11 ) NULL,
+	`room_id` Int( 11 ) NULL,
+	`amount` Int( 11 ) NULL
+ )
+CHARACTER SET = utf8
+COLLATE = utf8_general_ci
+ENGINE = InnoDB;
+-- ---------------------------------------------------------
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
@@ -108,3 +120,4 @@ ENGINE = InnoDB;
 
 
 ALTER TABLE votes ADD UNIQUE KEY `pk` (`candidate_id`, `school_id`, `room_id`);
+ALTER TABLE notes ADD UNIQUE KEY `pk` (`school_id`, `room_id`);

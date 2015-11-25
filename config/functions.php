@@ -56,3 +56,8 @@ function _post($key)
 {
   return isset($_POST[$key]) ? filter_var($_POST[$key]) : null;
 }
+
+function isPost()
+{
+  return $_SERVER['REQUEST_METHOD'] === 'POST';
+}

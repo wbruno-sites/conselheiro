@@ -30,6 +30,17 @@ class ElectoralVotes
     return $this->mysqli->query($sql);
   }
 
+  public function upsert_notes($school_id, $room_id, $amount)
+  {
+    $sql = "INSERT INTO notes (school_id, room_id, amount)
+        VALUES ({$school_id}, {$room_id}, {$amount})
+          ON DUPLICATE KEY UPDATE amount = {$amount}";
+
+    echo $sql;
+
+    return $this->mysqli->query($sql);
+  }
+
   public function total($order)
   {
     $order_by = $order === 'total' ? 'total DESC' : 'c.id ASC';

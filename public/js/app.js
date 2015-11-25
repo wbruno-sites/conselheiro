@@ -3,7 +3,11 @@ var $menu_toggle = $("#menu-toggle"),
     $school_id = $('select[name="school_id"]'),
     $room_id = $('select[name="room_id"]'),
     $confirmAll = $('#confirm-all'),
+    $notes = $('#notes'),
+    $notesTotal = $('#notes-total'),
     $votesTable = $('#votes-table');
+
+var NOTES_QUANTITY = 5;
 
 
 /* Menu Toggle */
@@ -33,6 +37,21 @@ $votes_amount.on('blur', function() {
         $tr.find('.status').html('<span class="label label-warning">pending</span>');
       }
     });
+});
+
+$notes.on('keyup', function() {
+  var $this = $(this);
+  var total = $this.val() * NOTES_QUANTITY;
+
+  $notesTotal.html(total);
+});
+
+$notes.on('blur', function() {
+  var $this = $(this);
+  var data = $this.parents('tr').data();
+  data.amount = $this.val();
+
+  update('app/compute-notes.php', data);
 });
 
 $school_id.on('change', function() {
@@ -69,18 +88,30 @@ $confirmAll.on('click', function() {
     votes.push(data);
   });
 
+  var total = parseInt($notes.val() * NOTES_QUANTITY, 10);
+
+  if (total !== votesCount()) {
+    alert('O número de votos nas cédulas não confere com o número de votos digitados.');
+    return;
+  }
+
   update('app/confirm-all.php', { items: votes })
     .then(function(data) {
       location.href = '';
     });
 });
 
+function votesCount() {
+  var total = 0;
+  $('input[name="votes_amount[]"]').each(function() {
+    total += parseInt($(this).val() || 0, 10);
+  });
+
+  return total;
+}
+
 
 function update(url, data) {
-  if(!data.votes_amount && !data.items[0].votes_amount) {
-    return;
-  }
-
   return $.ajax({
     url: url,
     data: data,

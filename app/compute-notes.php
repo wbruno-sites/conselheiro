@@ -5,7 +5,7 @@ require '../models/ElectoralVotes.php';
 if (isPost()) {
   $result = [];
   $ev = new ElectoralVotes($GLOBALS['mysqli']);
-  $query = $ev->upsert( _post('candidateid'), _post('schoolid') , _post('roomid'), _post('votes_amount'), 'pending');
+  $query = $ev->upsert_notes(_post('schoolid') , _post('roomid'), _post('amount'));
 
   if ($GLOBALS['mysqli']->error) {
     $result['error'] = $GLOBALS['mysqli']->error;

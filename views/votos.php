@@ -54,6 +54,15 @@ require('./models/School.php');
 </div><!-- .col-md-3 -->
 
 <div class="col-md-12">
+  <h2>Quantidade de cédulas da sala</h2>
+  <table id="notes-table" class="table table-striped table-hover">
+    <tr data-schoolId="<?php echo _get('school_id'); ?>" data-roomId="<?php echo _get('room_id'); ?>">
+      <td>Cédulas</td>
+      <td width="100"><input type="text" pattern="[0-9]+" required="required" class="form-control" id="notes" /></td>
+      <td width="50">x 5</td>
+      <td width="100" id="notes-total">0</td>
+    </tr>
+  </table>
   <h2>CANDIDATOS</h2>
 
   <?php
