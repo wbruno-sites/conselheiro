@@ -30,6 +30,12 @@ class ElectoralVotes
     return $this->mysqli->query($sql);
   }
 
+  public function get_notes($school_id, $room_id)
+  {
+    $sql = "SELECT school_id, room_id, amount FROM NOTES WHERE SCHOOL_ID = {$school_id} AND ROOM_ID = {$room_id}";
+    return $this->mysqli->query($sql);
+  }
+
   public function upsert_notes($school_id, $room_id, $amount)
   {
     $sql = "INSERT INTO notes (school_id, room_id, amount)

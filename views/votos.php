@@ -55,10 +55,22 @@ require('./models/School.php');
 
 <div class="col-md-12">
   <h2>Quantidade de cédulas da sala</h2>
+<?php
+    $ev = new ElectoralVotes($GLOBALS['mysqli']);
+    $query = $ev->get_notes(_get('school_id'), _get('room_id'));
+
+    $notes_amount = 0;
+    if ($query->num_rows) {
+      $data = $query->fetch_object();
+      $notes_amount = $data->amount;
+    }
+?>
   <table id="notes-table" class="table table-striped table-hover">
     <tr data-schoolId="<?php echo _get('school_id'); ?>" data-roomId="<?php echo _get('room_id'); ?>">
       <td>Cédulas</td>
-      <td width="100"><input type="text" pattern="[0-9]+" required="required" class="form-control" id="notes" /></td>
+      <td width="100">
+        <input type="text" pattern="[0-9]+" required="required" class="form-control" id="notes" value="<?php echo $notes_amount; ?>" />
+      </td>
       <td width="50">x 5</td>
       <td width="100" id="notes-total">0</td>
     </tr>
