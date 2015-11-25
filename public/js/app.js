@@ -39,12 +39,8 @@ $votes_amount.on('blur', function() {
     });
 });
 
-$notes.on('keyup', function() {
-  var $this = $(this);
-  var total = $this.val() * NOTES_QUANTITY;
-
-  $notesTotal.html(total);
-});
+notesTotal();
+$notes.on('keyup', notesTotal);
 
 $notes.on('blur', function() {
   var $this = $(this);
@@ -110,6 +106,11 @@ function votesCount() {
   return total;
 }
 
+function notesTotal() {
+  var total = $notes.val() * NOTES_QUANTITY;
+
+  $notesTotal.html(total);
+}
 
 function update(url, data) {
   return $.ajax({
