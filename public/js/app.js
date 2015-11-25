@@ -44,7 +44,7 @@ $notes.on('keyup', notesTotal);
 
 $notes.on('blur', function() {
   var $this = $(this);
-  var data = $this.parents('tr').data();
+  var data = $this.parents('#notes-box').data();
   data.amount = $this.val();
 
   update('app/compute-notes.php', data);

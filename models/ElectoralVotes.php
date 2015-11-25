@@ -42,8 +42,6 @@ class ElectoralVotes
         VALUES ({$school_id}, {$room_id}, {$amount})
           ON DUPLICATE KEY UPDATE amount = {$amount}";
 
-    echo $sql;
-
     return $this->mysqli->query($sql);
   }
 
