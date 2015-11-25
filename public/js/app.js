@@ -3,8 +3,7 @@ var $menu_toggle = $("#menu-toggle"),
     $school_id = $('select[name="school_id"]'),
     $room_id = $('select[name="room_id"]'),
     $confirmAll = $('#confirm-all'),
-    $votesTable = $('#votes-table'),
-    $btn_confirm = $('.btn-confirm');
+    $votesTable = $('#votes-table');
 
 
 /* Menu Toggle */
@@ -32,25 +31,6 @@ $votes_amount.on('blur', function() {
     .then(function(data) {
       if (data.result) {
         $tr.find('.status').html('<span class="label label-warning">pending</span>');
-      }
-    });
-});
-
-$btn_confirm.on('click', function() {
-  var $this = $(this),
-      $tr = $this.parents('tr'),
-      data = $tr.data();
-
-  data.votes_amount = $tr.find('input[name="votes_amount[]"]').val();
-
-  if(!data.votes_amount) {
-    return;
-  }
-
-  update('app/confirm-vote.php', data)
-    .then(function(data) {
-      if (data.result) {
-        $tr.find('.status').html('<span class="label label-success">confirmed</span>');
       }
     });
 });
