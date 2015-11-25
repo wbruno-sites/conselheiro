@@ -17,7 +17,9 @@ require('./models/ElectoralVotes.php');
   } else {
 
   $prev_school = '';
+  $total = 0;
   while($data = $query->fetch_object()) {
+    $total += $data->total;
 
     if ($prev_school === '' || $prev_school !== $data->school_name) {
 
@@ -58,4 +60,10 @@ require('./models/ElectoralVotes.php');
 }//else
 ?>
   </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="3"><b>Total:</b></td>
+      <td><?= $total; ?></td>
+    </tr>
+  </tfoot>
 </table>

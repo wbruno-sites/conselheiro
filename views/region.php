@@ -17,7 +17,9 @@ require('./models/ElectoralVotes.php');
   } else {
 
   $prev_region = '';
+  $total = 0;
   while($data = $query->fetch_object()) {
+    $total += $data->total;
 
     if ($prev_region === '' || $prev_region !== $data->region_name) {
 ?>
@@ -34,10 +36,10 @@ require('./models/ElectoralVotes.php');
 <table class="table table-striped table-hover">
   <thead>
     <tr>
-      <th>ID</th>
+      <th width="80">ID</th>
       <th>Nome</th>
       <th>Região</th>
-      <th>Total</th>
+      <th width="80">Total</th>
     </tr>
   </thead>
   <tbody>
@@ -56,4 +58,39 @@ require('./models/ElectoralVotes.php');
 }//else
 ?>
   </tbody>
+</table>
+
+<?php
+  $ev = new ElectoralVotes($GLOBALS['mysqli']);
+  $query = $ev->whiteAndNulls(_get('order'));
+?>
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th width="80">ID</th>
+      <th>Nome</th>
+      <th width="80">Total</th>
+    </tr>
+  </thead>
+  <tbody>
+
+<?php
+  while($data = $query->fetch_object()) {
+    $total += $data->total;
+?>
+    <tr>
+      <td><?php echo $data->id ?></td>
+      <td><?php echo $data->name ?></td>
+      <td><?php echo $data->total ?></td>
+    </tr>
+<?php
+  }
+?>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="2"><b>Total:</b></td>
+      <td><?= $total; ?></td>
+    </tr>
+  </tfoot>
 </table>

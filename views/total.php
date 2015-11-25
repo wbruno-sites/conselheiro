@@ -26,7 +26,9 @@ require('./models/ElectoralVotes.php');
   </thead>
   <tbody>
 <?php
+  $total = 0;
   while($data = $query->fetch_object()) {
+    $total += $data->total;
 ?>
     <tr>
       <td><?php echo $data->id ?></td>
@@ -38,4 +40,10 @@ require('./models/ElectoralVotes.php');
 }//else
 ?>
   </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="2"><b>Total:</b></td>
+      <td><?= $total; ?></td>
+    </tr>
+  </tfoot>
 </table>

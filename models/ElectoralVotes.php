@@ -60,6 +60,21 @@ class ElectoralVotes
     return $this->mysqli->query($sql);
   }
 
+  public function whiteAndNulls($order)
+  {
+    $order_by = $order === 'total' ? 'total DESC' : 'c.id ASC';
+
+    $sql = "SELECT c.id, c.region_id, c.name, SUM(votes_amount) AS total
+      FROM candidates c
+      INNER JOIN votes v
+        ON v.candidate_id = c.id
+      WHERE c.region_id = 0
+      GROUP BY c.region_id, c.id
+      ORDER BY c.region_id, {$order_by}";
+
+    return $this->mysqli->query($sql);
+  }
+
   public function school($order)
   {
     $order_by = $order === 'total' ? 'total DESC' : 'c.id ASC';
