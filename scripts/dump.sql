@@ -54,7 +54,7 @@ DROP TABLE IF EXISTS `schools` CASCADE;
 
 CREATE TABLE `schools` (
 	`id` Int( 11 ) AUTO_INCREMENT NOT NULL,
-	`name` VarChar( 60 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+	`name` VarChar( 100 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
 	`rooms_amount` Int( 11 ) NULL,
 	 PRIMARY KEY ( `id` )
  )

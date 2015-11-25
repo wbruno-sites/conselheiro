@@ -67,7 +67,6 @@ require('./models/School.php');
         <th>Nome</th>
         <th>Votos</th>
         <th>Status</th>
-        <?= (isAdmin()) ? '<th>Confirmar</th>' : null ; ?>
       </tr>
     </thead>
     <tbody>
@@ -95,7 +94,6 @@ require('./models/School.php');
           ?>
         </td>
         <td class="status"><?php echo $status; ?></td>
-        <?= (isAdmin()) ? '<td><button type="button" class="btn btn-primary btn-confirm" tabindex="-1">Confirmar</button></td>' : null ; ?>
       </tr>
   <?php
     }
@@ -110,7 +108,7 @@ require('./models/School.php');
 
 <?php if (isAdmin()) {?>
   <div class="col-sm-6 col-sm-offset-3">
-    <button class="btn btn-block btn-lg btn-success" id="confirm-all">Confirmar Todos</button>
+    <button class="btn btn-block btn-lg btn-success" id="confirm-all">Confirmar</button>
   </div>
 <?php } ?>
 </div>
