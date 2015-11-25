@@ -1,7 +1,7 @@
 <?php
-if($_GET['id']){
+if(_get('id')){
   $user = new User($GLOBALS['mysqli']);
-  $query = $user->findUser($_GET['id'])->fetch_object();
+  $query = $user->findUser(_get('id'))->fetch_object();
 
   if(!$query) {
     $message = "Usuário inválido!";

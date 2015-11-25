@@ -1,9 +1,9 @@
 <div class="col-md-12">
   <h1>Usuários</h1>
-  <?php if($_GET['success']) { ?>
-  <div class="alert alert-success" role="alert"><?= $_GET['success']; ?></div>
-  <?php } else if($_GET['error']) { ?>
-  <div class="alert alert-danger" role="alert"><?= $_GET['error']; ?></div>
+  <?php if(_get('success')) { ?>
+  <div class="alert alert-success" role="alert"><?= _get('success'); ?></div>
+  <?php } else if(_get('error')) { ?>
+  <div class="alert alert-danger" role="alert"><?= _get('error'); ?></div>
   <?php } ?>
   <?= (isAdmin()) ? '<a href="cadastrar-usuario.php" class="btn btn-success">Adicionar Novo</a>' : null ; ?>
   <table class="table table-striped table-hover">
