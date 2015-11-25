@@ -86,6 +86,10 @@ $confirmAll.on('click', function() {
 
   var total = parseInt($notes.val() * NOTES_QUANTITY, 10);
 
+  if (!votes.length) {
+    return;
+  }
+
   if (total !== votesCount()) {
     alert('O número de votos nas cédulas não confere com o número de votos digitados.');
     return;
