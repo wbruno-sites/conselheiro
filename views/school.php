@@ -17,9 +17,13 @@ require('./models/ElectoralVotes.php');
   } else {
 
   $prev_school = '';
+  $total_per_school = 0;
   $total = 0;
   while($data = $query->fetch_object()) {
     $total += $data->total;
+
+    $total_per_school += $data->total;
+
 
     if ($prev_school === '' || $prev_school !== $data->school_name) {
 
@@ -27,7 +31,11 @@ require('./models/ElectoralVotes.php');
 ?>
 
 <?php if ($prev_school !== '') {  ?>
-  </tbody></table>
+  </tbody>
+  </tfoot>
+    <tr><td colspan="3">Total por escola:</td><td><?php echo $total_per_school - $data->total; $total_per_school = $data->total; ?></td></tr>
+  </tfoot>
+  </table>
 <?php } ?>
 
 
@@ -61,6 +69,7 @@ require('./models/ElectoralVotes.php');
 ?>
   </tbody>
   <tfoot>
+    <tr><td colspan="3">Total por escola:</td><td><?php echo $total_per_school; ?></td></tr>
     <tr>
       <td colspan="3"><b>Total:</b></td>
       <td><?= $total; ?></td>
